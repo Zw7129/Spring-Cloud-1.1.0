@@ -18,5 +18,15 @@ public class QueryUserService {
 	public List<QueryUser> findUser() {
 		return userDao.findUser();
 	}
+	
+	public int addUser(QueryUser user) {
+		
+		return userDao.addUser(user);
+	}
+	
+	public int delUser(String uname) {
+		
+		return userDao.delUser(uname);
+	}
 
 }

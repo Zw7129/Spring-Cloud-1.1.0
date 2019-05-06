@@ -21,19 +21,37 @@ public class QueryUserController {
 	
 	@RequestMapping("/findUser")
 	public String sayhello(){
-		System.out.println("111111111111111111111111111111111111111111111111111");
 		List<QueryUser> findUser = userService.findUser();
 		String temp="";
 		for (QueryUser queryUser : findUser) {
-			temp+="<h1>"+queryUser+"<h1>";
+			temp+="<h1>name:"+queryUser.getUname()+"  &nbsp;&nbsp;&nbsp;&nbsp;密码："+queryUser.getUpwd()+"<h1>";
 		}
-		return  temp;
+		return  temp+"<a href=http://localhost:7902/index>返回首页</a>";
 	}
 	
-	@RequestMapping("/ll")
+	@RequestMapping("/addUser")
 	@ResponseBody
-	public String show() {
-		return "123";
+	public String show(QueryUser user) {
+		
+		userService.addUser(user);
+		
+		return "<h1>添加成功"+user+"<h1><a href='http://localhost:7902/hello'>点击查询全部<a>";
+		
+	}
+	
+	@RequestMapping("/delUser")
+	@ResponseBody
+	public String delUser(String uname) {
+		
+		int delUser = userService.delUser(uname);
+		String temp="";
+		if(delUser==1) {
+			temp="删除成功";
+		}else {
+			temp="删除失败";
+		}
+		
+		return "<h1>"+temp+"<h1><a href='http://localhost:7902/hello'>点击查询全部<a>";
 		
 	}
 

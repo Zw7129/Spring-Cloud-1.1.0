@@ -6,4 +6,14 @@
     <select id="findUser" resultType="com.vo.QueryUser">  
         SELECT * FROM userinfo 
     </select>  
+    
+    
+    <insert id="addUser" parameterType="com.vo.QueryUser">
+    INSERT  INTO userinfo(uname,upwd) VALUES(#{uname},#{upwd})
+    </insert>
+    
+    <delete id="delUser" parameterType="String">
+    DELETE FROM userinfo WHERE uname=#{value}
+    </delete>
+    
 </mapper>
