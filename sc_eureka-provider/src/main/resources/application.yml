@@ -1,8 +1,6 @@
+
 server:
   port: 7900
-spring:
-  application:
-    name: provider-user
 eureka:
   client:
     serviceUrl:
@@ -10,4 +8,20 @@ eureka:
 logging:
   level:
     root: INFO
+    
+    
+spring:
+   application:
+    name: provider-user
+    
+   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cms
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 60000 
+mybatis:
+  mapper-locations: classpath*:mapper/query/*.xml
+  type-aliases-package: com.dao.*
 

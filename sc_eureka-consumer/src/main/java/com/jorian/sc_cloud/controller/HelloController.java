@@ -12,7 +12,7 @@ public class HelloController {
 	
 	@RequestMapping("/hello")
 	public String hello(){
-		String url="http://provider-user/hello";
+		String url="http://provider-user/findUser";
 		
 		//返回值类型和我们的业务返回值一致
 		return resttemplate.getForObject(url, String.class);
